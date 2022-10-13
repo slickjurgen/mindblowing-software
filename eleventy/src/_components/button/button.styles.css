@@ -1,0 +1,17 @@
+.component--button {
+  @apply bg-blue
+    duration-300
+    inline-block
+    no-underline
+    px-8
+    py-3
+    relative
+    text-white
+    transition-all
+    uppercase;
+
+  &.theme-white {
+    @apply bg-white
+      text-black;
+  }
+}

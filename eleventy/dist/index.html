@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    
+
+    <title>Twenty Ninety | Twenty Ninety</title>
+
+<meta name="description" content="A component-based Eleventy starter kit.">
+<meta name="image" content="https://twenty-ninety.netlify.app/assets/images/meta/twenty-ninety--meta--home.png">
+
+<meta property="og:description" content="A component-based Eleventy starter kit.">
+<meta property="og:image" content="https://twenty-ninety.netlify.app/assets/images/meta/twenty-ninety--meta--home.png">
+<meta property="og:title" content="Twenty Ninety | Twenty Ninety">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://twenty-ninety.netlify.app/">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:description" content="A component-based Eleventy starter kit.">
+<meta property="twitter:image" content="https://twenty-ninety.netlify.app/assets/images/meta/twenty-ninety--meta--home.png">
+<meta property="twitter:title" content="Twenty Ninety | Twenty Ninety">
+
+
+    
+
+    
+
+    
+
+    <script>
+      function onInit(callback) {
+        if (typeof App !== 'undefined') 
+          return callback()
+        setTimeout(onInit, 250, callback)
+      }
+    </script>
+  </head>
+
+  <body class="font-default">
+
+
+<div class="bg-blue mb-12">
+  <div class="container text-center text-white py-24">
+    <h1>Twenty Ninety</h1>
+    <p class="text-lg mb-8">
+      An optimized, production-ready Eleventy starter kit by
+      <a href="https://twitter.com/seancdavis29" class="text-white underline">@seancdavis</a>.
+    </p>
+    <a href="https://github.com/seancdavis/twenty-ninety#getting-started" class="component--button theme-white" >
+  Get Started
+</a>
+  </div>
+</div>
+<div class="container max-w-2xl">
+  <h2>Getting Started</h2>
+<p>If you want to just go for it, you can deploy this project directly to Netlify:</p>
+<p><a href="https://app.netlify.com/start/deploy?repository=https://github.com/seancdavis/twenty-ninety"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a></p>
+<p>If you want to start by working on your machine, first clone the repo:</p>
+<pre><code>$ git clone https://github.com/seancdavis/twenty-ninety.git your-project-name
+</code></pre>
+<p>Install dependencies:</p>
+<pre><code>$ yarn install
+</code></pre>
+<p>(Note: If you prefer NPM over Yarn, you run <code>npm install</code> instead, then delete <code>yarn.lock</code>.)</p>
+<p>Then start the development server:</p>
+<pre><code>$ yarn develop
+</code></pre>
+<p>See below for a list of features and how to work with them.</p>
+<h2>Project Goals</h2>
+<p>Eleventy is a wonderful static site generator. It's quick. It gets out of the way. It lets you work how you want to work. While that's fun and flexible, <a href="https://cobwwweb.com/increase-developer-efficiency-by-establishing-conventions">it's not efficient</a>.</p>
+<p>This project exists to provide a foundation on which we can build websites consistently and efficiently over time.</p>
+<p>As a starter kit, the benefits you derive from this setup exist only in what is provided here, at this time. That's limiting in a way, as you lose the benefit of any progress made here along the way.</p>
+<p>Therefore, the longer-term goal with this project is to offer it as a package so you can get the benefits of updates made to the system, without losing the ability to opt-out of the (strong) opinions made here.</p>
+<h2>Features</h2>
+<p>There is a lot going on above what Eleventy offers out of the box. Here are those features. If you have questions, feel free to <a href="https://github.com/seancdavis/twenty-ninety/issues/new">open an issue</a> or <a href="https://twitter.com/seancdavis29">start a conversation on Twitter</a>.</p>
+<h3>Gulp</h3>
+<p>Eleventy offers a command to process templated files and output HTML code. Most websites require more processing, particularly with assets like CSS and JavaScript. That can make for disparate processes.</p>
+<p>In this project, <a href="https://gulpjs.com/">Gulp</a> plays the role of managing those processes together so you only have to worry about a few simple commands. The configuration can be found in <code>gulpfile.js</code>.</p>
+<p>For convenience, all tasks are exported and can be like so:</p>
+<pre><code>$ yarn gulp [task]
+</code></pre>
+<p>To see a list of tasks, run:</p>
+<pre><code>$ yarn gulp --tasks
+</code></pre>
+<p>But, in general, if you're following the conventions for CSS and JS, you <em>should</em> only need to worry about <code>develop</code> (starts a dev server) and <code>build</code> (builds static files). Both of these commands have been added to <code>package.json</code>, so that you can skip the <code>gulp</code> portion and just run:</p>
+<pre><code>$ yarn develop
+$ yarn build
+</code></pre>
+<h3>Eleventy</h3>
+<p>The HTML processing uses <a href="https://www.11ty.dev/">Eleventy</a>, which I hope isn't surprising, as this is currently an Eleventy starter kit!</p>
+<p>Anything you can do with Eleventy, you can do here, too. But if you use what we have here out of the box, there are a few items to note ...</p>
+<h4>Eleventy Config</h4>
+<p>Eleventy's config goes into <code>.eleventy.js</code>. That file typically exports an object representing <a href="https://www.11ty.dev/docs/config/">the config values that have been adjusted</a>. In this case, those items have been abstracted to <code>eleventy.config.js</code>, as they are used elsewhere in the project.</p>
+<p>Note that some defaults have changed. The two most notable are that the build directory is <code>dist</code> and the templating engine for markdown files is nunjucks, rather than liquid.</p>
+<h4>Eleventy Utils</h4>
+<p>When the config file begins to perform many tasks it can quickly get unwieldy. Therefore, this starter offers the benefit of Eleventy utils. Any <code>.js</code> file dropped in to the <code>utils</code> directory that isn't prefixed with an underscore or suffixed with <code>.spec.js</code> will get picked up and run as a plugin by <code>.eleventy.js</code>.</p>
+<p>Each plugin (utility) requires a <strong>single named export</strong> as <code>default</code>. Check out <code>utils/shortcodes/markdown.js</code> as an example. It exports the following:</p>
+<pre><code class="hljs"><span class="hljs-built_in">exports</span>.default = <span class="hljs-function">(<span class="hljs-params">eleventyConfig</span>) =&gt;</span> {
+  eleventyConfig.addPairedShortcode(<span class="hljs-string">&quot;markdown&quot;</span>, <span class="hljs-function">(<span class="hljs-params">input</span>) =&gt;</span> <span class="hljs-built_in">exports</span>.renderMarkdown(input))
+}</code></pre><p>That looks just like some code that would typically be dropped into <code>.eleventy.js</code>, and that's the point. This provides a means of modularizing the plugins you provide to Eleventy.</p>
+<p>There are a few (cool) custom shortcodes that ship with this project. They are listed near the end of the features.</p>
+<h3>CSS</h3>
+<p>CSS is ready to go by default. It is configured to use <a href="https://postcss.org/">PostCSS</a> (via a Gulp plugin), and also makes use of <a href="https://tailwindcss.com/">Tailwind CSS</a>.</p>
+<p>PostCSS plugins can be added or removed from <code>postcss.config.js</code>, and Tailwind configuration can be adjusted in or removed from <code>tailwind.config.js</code>.</p>
+<p>Any <code>.css</code> files in <code>src/_assets/css</code> will get picked up by the Gulp task and processed through PostCSS. The default is <code>main.css</code>.</p>
+<p>The file is loaded in the <code>&lt;head&gt;</code> of the head of the default layout (<code>src/_includes/layout/head.njk</code>).</p>
+<h3>JavaScript</h3>
+<p>JavaScript is built using <a href="https://webpack.js.org/">Webpack</a> (via a Gulp plugin). The webpack config can be found at <code>webpack.config.js</code>.</p>
+<p>The Gulp plugin will pick up any <code>.js</code> file in <code>src/_assets/js</code> and move it to <code>dist/assets/js/...</code>.</p>
+<p>However, it is recommended that with the current Webpack config, you only use a single bundle. It is designed to make the global code available through an <code>App</code> object. Notice that if you start up the dev server (<code>yarn develop</code>), you can open up your console and run the following:</p>
+<pre><code class="hljs"><span class="hljs-built_in">console</span>.log(App)
+<span class="hljs-comment">// =&gt; Module {default: {…}, __esModule: true, Symbol(Symbol.toStringTag): &quot;Module&quot;}</span>
+<p><span class="hljs-built_in">console</span>.log(App.default)
+<span class="hljs-comment">// =&gt; {}</span></code></pre><p>That's because that's the default export from <code>main.js</code>:</p></p>
+<pre><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {}</code></pre><p>The main JavaScript bundle is loaded onto the page from the foot include (<code>src/_includes/layout/foot.njk</code>).</p>
+<h4>JavaScript Utilities</h4>
+<p>The project is also setup for injecting global utilities. The only one included by default is the <em>scan links</em> utility (<code>src/_assets/js/utils/scan-links.js</code>). When the page is read, the link scanner looks through all anchor tags. If it determines the <code>href</code> value is to an external URL, it will add <code>target=&quot;_blank&quot;</code> and <code>rel=&quot;noopener&quot;</code> attributes to the tag.</p>
+<p>If you'd like to remove this functionality, delete the file and remove the import line from <code>main.js</code>. Or, if you want to adjust the attributes that are added, you can edit the <code>scan-links.js</code> file.</p>
+<h3>Netlify</h3>
+<p>This project is built to be deployed with <a href="https://netlify.com">Netlify</a>. There's even a button above to do it with just a couple clicks!</p>
+<p>Some base configuration lives in <code>netlify.toml</code>, while others you may want to configure through the Netlify UI.</p>
+<p>The project also brings a handful of <a href="https://docs.netlify.com/configure-builds/build-plugins/">build plugins</a>. Many of these are added to improve performance or accessibility in production. There's also a local plugin for running tests prior to running the build. You can see the list of plugins used in <code>netlify.toml</code>. Most are well-documented in their README files.</p>
+<h3>Testing</h3>
+<p><a href="https://jestjs.io/">Jest</a> is used for testing both server-side and client-side JavaScript code. The convention in this project is to append test files with <code>.spec.js</code>.</p>
+<p>The tests can be run with:</p>
+<pre><code>$ yarn test
+</code></pre>
+<p>There is a local Netlify build plugin that runs these tests automatically before the build on Netlify. You can remove the plugin if you don't want it to run.</p>
+<h3>Environment Variables</h3>
+<p>I prefer <a href="https://direnv.net/">direnv</a> for managing environment variables, but you can use whatever you'd prefer. A list of environment variables can be found in <code>.envrc-sample</code>.</p>
+<h3>Fonts</h3>
+<p>Fonts are included by default in <code>src/_assets/css/global/fonts.css</code>.</p>
+<p>If you use either local or <a href="https://fonts.google.com/">Google Fonts</a>, the Netlify build plugin <code>netlify-plugin-subfont</code> will process the fonts and create subfont versions of those files, increasing performance in production.</p>
+<h3>Components</h3>
+<p>Components are one of the coolest features of this project. They are included as an Eleventy utility, but there's some magic that happens behind the scenes.</p>
+<p>Components each get their own directory inside <code>src/_components</code>. We'll use the button as an example here.</p>
+<p>There must be at least one file in the directory: <code>[name].template.njk</code>. (At this time, only <code>.njk</code> components are supported.) Therefore, a button component must include a <code>button.template.njk</code> file.</p>
+<p>It gets rendered on the page using a <code>component</code> shortcode. For example:</p>
+<pre><code class="hljs">component &quot;button&quot;,
+  url = &quot;/&quot;,
+  label = &quot;Click Me!&quot;,
+  theme = &quot;blue&quot;</code></pre><p>The first argument tells the shortcode which component to render (<code>button</code>), while the rest are sent as variables to the component.</p>
+<p>But sometimes you want to transform those properties (variables) before rendering and don't want to have to do that in a view file. That's where transformers come in. If you create a file at <code>[name].transformer.js</code> (e.g. <code>button.transformer.js</code>), the properties will get passed through the default export, which should return the transformed components. For example, the button transformer sets a default <code>theme</code> property if it is missing. That way we can safely use the <code>theme</code> variable in the template.</p>
+<p>Lastly, if you want to bring custom styles, you can add a <code>[name].styles.css</code> file to the directory and it will get picked up automatically by <code>main.css</code>. Note that these styles are not automatically scoped.</p>
+<h3>Images</h3>
+<p><code>image</code> is another component (<code>src/_components/image</code>). It is designed to work with <a href="https://www.imgix.com">Imgix</a>. It is, at this time, <em>extremely</em> opinionated, even down to the breakpoints. It is undergoing a transformation, as I work with the Imgix team to develop a more flexible solution. You're welcome to dig through the transformer to see how it works. Or you can remove and add your own.</p>
+<h3>Markdown</h3>
+<p>Markdown is <a href="https://www.11ty.dev/docs/languages/markdown/">supported as a templating language with Eleventy</a>. However, it can't be rendered in other templates. To remedy that problem, this project brings a <code>markdown</code> shortcode to render markdown within other template files.</p>
+<p>This feature uses <a href="https://github.com/markdown-it/markdown-it">markdown-it</a> and can be found in <code>utils/shortcodes/markdown.js</code>. It also supports syntax highlighting via <a href="https://highlightjs.org/">Highlight.js</a>, bringing in the GitHub theme by default.</p>
+<h3>Google Analytics</h3>
+<p>Google Analytics are loaded in a script included by <code>main.js</code> (<code>src/_assets/js/lib/analytics.js</code>). This makes use of the <a href="https://www.npmjs.com/package/analytics">analytics library</a>. You may swap out Google for other plugins, or take a different approach to loading analytics on your site.</p>
+<p>If you stick with Google, it expects the following conditions to be true with environment variables:</p>
+<ul>
+<li><code>ELEVENTY_ENV</code> to be missing or set to production.</li>
+<li><code>GOOGLE_ANALYTICS_ID</code> to be set as the ID for the GA account.</li>
+<li><code>ANALYTICS_APP_NAME</code> to be set as the name of your project (this is arbitrary, but should be adjusted).</li>
+</ul>
+<h3>SEO</h3>
+<p>SEO is another component offered out of the box. It provides a means of writing SEO meta tags to the page based on page-specific data, with sensible defaults.</p>
+<p>The defaults can be set in <code>src/_data/seo_defaults.json</code>.</p>
+<p>The component gets loaded in the head (<code>src/_includes/layout/head.njk</code>). Notice that it sends the <code>title</code>, <code>image</code>, and <code>description</code>, but optionally allows for overrides by using the <code>seo</code> property.</p>
+<p>This means that pages using this head include can override with the following structure:</p>
+<pre><code class="hljs">---
+title: &quot;Page Title&quot;
+description: &quot;Page Description&quot;
+image: &quot;/page-image.jpg&quot;
+seo:
+  title: &quot;SEO Override Title&quot;
+  description: &quot;SEO Override Description&quot;
+  image: &quot;/seo-override-image.jpg&quot;
+  og:
+<span class="hljs-code">    title: &quot;OpenGraph Override Title&quot;
+    description: &quot;OpenGraph Override Description&quot;
+    image: &quot;/og-override-image.jpg&quot;
+    type: webpage
+  twitter:
+    title: &quot;Twitter Override Title&quot;
+    description: &quot;Twitter Override Description&quot;
+    image: &quot;/twitter-override-image.jpg&quot;
+    card: summary
+---
+</span>
+...</code></pre><p>Here are items of note:</p>
+<ul>
+<li>Twitter first falls back to OpenGraph, then to the overrides, then to the page, then to the global defaults.</li>
+<li>OpenGraph falls back to the overrides, then to the page, then to the global defaults.</li>
+<li>It expects images to be local, as it prepends the base url to the image path.</li>
+</ul>
+<h3>Yarn v NPM</h3>
+<p>I prefer <a href="https://yarnpkg.com/">Yarn</a> over the more traditional NPM as a dependency manager. If you prefer NPM, it's easy enough to switch over. Simply run <code>npm install</code> and then delete <code>yarn.lock</code>. You should see a <code>package-lock.json</code> file appear in the project root, which means you're good to go! There's an NPM alternative to any yarn command mentioned here.</p>
+<h2>Contributing</h2>
+<p>If you'd like what you see here but have found a bug or would like to add a feature, super! And thank you very much for your support and contribution. To do so, have at it. Fork the repository and create a PR with your proposed change.</p>
+<p>If you have an idea or found a bug, but can't or don't want to work it, feel free to <a href="https://github.com/seancdavis/twenty-ninety/issues/new">create an issue</a>.</p>
+<p>If you'd like to chat about the project, the best way to start the conversation is with <a href="https://twitter.com/seancdavis29">a message on Twitter</a>.</p>
+  </div>
+
+
+    <script src="/assets/js/main.js" async></script>
+  </body>
+</html>
+

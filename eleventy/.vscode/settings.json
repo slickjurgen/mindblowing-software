@@ -1,0 +1,11 @@
+{
+  "postcss.validate": false,
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "cSpell.words": [
+    "hljs"
+  ]
+}
